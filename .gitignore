@@ -1,24 +1,12 @@
-.env
-.env.*
-node_modules/
+# Python
 __pycache__/
-.DS_Store
-*.log
-*.pyc
-*.pyo
-*.pyd                       
-*.swp
-*.swo
-*.bak
-*.tmp   
-# Python virtual environment
+*.py[cod]
+
+# Virtual environments
 venv/
 .venv/
+backend/venv/
 
-# Environment variables
+# Env files
 .env
 .env.*
-
-# Python cache
-__pycache__/
-*.pyc
