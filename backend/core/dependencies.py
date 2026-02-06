@@ -15,11 +15,15 @@ def get_current_user(token: str = Depends(oauth2)):
         payload = jwt.decode(token, SECRET, algorithms=[ALGO])
         username = payload.get("sub")
 
+        if not username:
+            raise HTTPException(status_code=401, detail="Invalid token payload")
+
         user = users_col.find_one({"username": username})
         if not user:
             raise HTTPException(status_code=401, detail="User not found")
 
         return {"sub": user["username"], "email": user["email"]}
 
-    except:
+    except Exception as e:
+        print("JWT ERROR:", e)
         raise HTTPException(status_code=401, detail="Invalid or expired token")

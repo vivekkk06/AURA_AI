@@ -1,34 +1,34 @@
 import streamlit as st
 import requests
+from components.ui import load_css
 
-# ---------------- CONFIG ----------------
-st.set_page_config("Register | AURA", layout="centered")
+# ------------------ PAGE CONFIG ------------------
+st.set_page_config(
+    page_title="Register | MULTI USER AI",
+    page_icon="📝",
+    layout="centered"
+)
 
-# ---------------- GLOBAL STYLE ----------------
+load_css()
+
+# ------------------ GLOBAL CARD STYLE ------------------
 st.markdown("""
 <style>
-.stApp {
-    background: radial-gradient(circle at top left, #020617, #020617);
-    color: white;
-}
-
-.card {
-    background: rgba(15,23,42,0.9);
-    padding: 35px;
+.auth-card {
+    background: radial-gradient(circle at top left, #0f172a, #020617);
+    padding: 36px;
     border-radius: 24px;
     border: 1px solid rgba(148,163,184,0.15);
-    box-shadow: 0 0 40px rgba(56,189,248,0.08);
+    box-shadow: 0 0 45px rgba(56,189,248,0.10);
     max-width: 480px;
     margin: auto;
 }
-
-.title {
+.auth-title {
     font-size: 36px;
     font-weight: 800;
     text-align: center;
 }
-
-.subtitle {
+.auth-sub {
     color: #94a3b8;
     text-align: center;
     margin-bottom: 25px;
@@ -36,14 +36,17 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# ---------------- SESSION ----------------
+# ------------------ SESSION ------------------
 if "otp_sent" not in st.session_state:
     st.session_state.otp_sent = False
 
-# ---------------- HEADER ----------------
-# st.markdown("<div class='card'>", unsafe_allow_html=True)
-st.markdown("<div class='title'>📝 Create your AURA account</div>", unsafe_allow_html=True)
-st.markdown("<div class='subtitle'>Multi-Agent AI Platform Access</div>", unsafe_allow_html=True)
+# ------------------ CARD START ------------------
+# st.markdown("<div class='auth-card'>", unsafe_allow_html=True)
+
+st.markdown("<div class='auth-title'>📝 Create your account</div>", unsafe_allow_html=True)
+st.markdown("<div class='auth-sub'>Access the Multi-Agent AI Platform</div>", unsafe_allow_html=True)
+
+st.divider()
 
 # =========================
 # SEND OTP
@@ -53,6 +56,10 @@ if not st.session_state.otp_sent:
     email = st.text_input("📧 Email address")
 
     if st.button("📨 Send OTP", use_container_width=True):
+        if not email:
+            st.warning("Please enter your email")
+            st.stop()
+
         with st.spinner("Sending verification code..."):
             r = requests.post(
                 "http://127.0.0.1:8000/auth/send-otp",
@@ -79,6 +86,10 @@ else:
     pwd = st.text_input("🔑 Password", type="password")
 
     if st.button("✅ Verify & Create Account", use_container_width=True):
+        if not otp or not user or not pwd:
+            st.warning("Please fill all fields")
+            st.stop()
+
         with st.spinner("Creating your account..."):
             r = requests.post(
                 "http://127.0.0.1:8000/auth/verify-otp",

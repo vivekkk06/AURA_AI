@@ -54,3 +54,4 @@ numpy
 # ===============================
 tqdm
 youtube-transcript-api
+yt-dlp

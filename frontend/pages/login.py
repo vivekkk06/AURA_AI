@@ -1,9 +1,11 @@
 import streamlit as st
 import requests
-
+from components.ui import load_css
 # ---------------- CONFIG ----------------
 st.set_page_config("Login | AURA AI", layout="centered")
 
+
+load_css()
 # ---------------- GLOBAL STYLE ----------------
 st.markdown("""
 <style>
@@ -81,8 +83,11 @@ if st.button("🚀 Login", use_container_width=True):
 
         if r.status_code == 200:
             st.session_state.token = r.json()["access_token"]
+
+            st.write("TOKEN:", st.session_state.token)
+            st.session_state.current_user = u
             st.success("✅ Login successful")
-            st.switch_page("pages/Home.py")
+            st.switch_page("app.py")
         else:
             st.error("❌ Invalid username or password")
 

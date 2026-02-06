@@ -1,63 +1,87 @@
 import streamlit as st
+from components.ui import load_css
 
-# ---------------- CONFIG ----------------
-st.set_page_config("About | AURA AI", layout="wide")
+# ------------------ PAGE CONFIG ------------------
+st.set_page_config(
+    page_title="About | AURA AI",
+    page_icon="ℹ",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 
-# ---------------- GLOBAL BACKGROUND ----------------
+load_css()
+
+# ------------------ AUTH ------------------
+if "token" not in st.session_state:
+    st.error("🔐 Please login first")
+    st.stop()
+
+# ------------------ SIDEBAR ------------------
+with st.sidebar:
+    st.markdown("<h2 style='text-align:center;'>🧠 MULTI USER AI</h2>", unsafe_allow_html=True)
+    st.markdown("<hr>", unsafe_allow_html=True)
+
+    st.success("✅ Logged in")
+    if st.button("🚪 Logout", use_container_width=True):
+        st.session_state.clear()
+        st.rerun()
+
+    st.markdown("### 📂 Navigation")
+    st.page_link("app.py", label="🏠 Home")
+    st.page_link("pages/chat_ai.py", label="💬 Chat AI")
+    st.page_link("pages/resume_ai.py", label="📄 Resume AI")
+    st.page_link("pages/memory_dashboard.py", label="🧠 Memory Dashboard")
+    st.page_link("pages/document_qa.py", label="📄 Document AI")
+    st.page_link("pages/news_research.py", label="📰 News Research")
+    st.page_link("pages/youtube_ai.py", label="🎥 YouTube AI")
+    
+
+    st.caption("⚡ Powered by FastAPI + LangChain + Groq")
+    st.caption("made by Vivek Badgujar")
+
+# ------------------ HERO ------------------
+st.markdown("""
+<div style="text-align:center; padding:30px 0 15px 0;">
+    <h1>ℹ About AURA AI</h1>
+    <p style="color:#94a3b8; font-size:17px;">
+        A full-stack, multi-agent, industry-grade Generative AI engineering platform
+    </p>
+</div>
+""", unsafe_allow_html=True)
+
+# ------------------ STYLE ------------------
 st.markdown("""
 <style>
-.stApp {
-    background: radial-gradient(circle at top left, #0f172a, #020617);
-    color: white;
-}
-
-.block-container {
-    padding-top: 2rem;
-}
-
 .glass {
-    background: rgba(15, 23, 42, 0.65);
-    backdrop-filter: blur(14px);
-    border-radius: 18px;
+    background: radial-gradient(circle at top left, #0f172a, #020617);
+    border-radius: 22px;
     padding: 28px;
     border: 1px solid rgba(148,163,184,0.15);
-    box-shadow: 0 0 30px rgba(56,189,248,0.08);
-    margin-bottom: 28px;
+    box-shadow: 0 0 35px rgba(56,189,248,0.08);
+    margin-bottom: 26px;
 }
-
 .section-title {
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 800;
 }
-
 .soft {
     color: #94a3b8;
-    font-size: 17px;
-    line-height: 1.6;
+    font-size: 16px;
+    line-height: 1.65;
 }
 </style>
 """, unsafe_allow_html=True)
 
-# ---------------- HEADER ----------------
-st.markdown("""
-<div style="text-align:center; padding:25px 0 15px 0;">
-    <h1>ℹ About AURA AI</h1>
-    <p class="soft">A full-stack, multi-agent, industry-grade Generative AI engineering platform</p>
-</div>
-""", unsafe_allow_html=True)
-
-st.divider()
-
-# ---------------- ABOUT ----------------
+# ------------------ ABOUT ------------------
 st.markdown("""
 <div class="glass">
     <div class="section-title">🧠 What is AURA AI?</div>
     <p class="soft">
-        <b>AURA AI</b> is an advanced, production-style <b>multi-user Generative AI platform</b> built to demonstrate
-        real-world AI system engineering — not just chatbots.
+        <b>AURA AI</b> is a production-style <b>multi-user Generative AI platform</b> engineered to demonstrate 
+        real-world AI system design — not just chatbots.
         <br><br>
-        It integrates <b>LLMs, agents, tools, vector search, document intelligence, resume analysis, news research,
-        and YouTube understanding</b> into a single unified AI ecosystem.
+        It unifies <b>LLMs, agents, tools, vector search, document intelligence, resume analysis, news research,
+        and YouTube understanding</b> into one intelligent ecosystem.
         <br><br>
         This platform is designed as a <b>resume-grade, internship-level, and startup-style AI engineering project</b>.
     </p>
@@ -79,7 +103,7 @@ with c1:
         • Groq Cloud inference (LLMs)<br>
         • MongoDB user & memory store<br>
         • Vector databases for RAG<br>
-        • Secure JWT authentication system
+        • Secure JWT authentication
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -95,7 +119,7 @@ with c2:
         • Document Question Answering (RAG)<br>
         • AI News Researcher System<br>
         • YouTube Video Understanding & Summarization<br>
-        • Memory Dashboard & vector recall system
+        • Memory Dashboard & recall system
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -121,11 +145,11 @@ st.markdown("""
 <div class="glass">
     <div class="section-title">🎯 Vision & Purpose</div>
     <p class="soft">
-    AURA AI was built to showcase:
+    AURA AI was built to demonstrate:
     <br><br>
     ✔ Real-world AI engineering workflows<br>
     ✔ End-to-end GenAI product design<br>
-    ✔ Multi-agent system thinking<br>
+    ✔ Multi-agent system architecture<br>
     ✔ LLM + data + tools integration<br>
     ✔ Industry-level project depth
     <br><br>
@@ -140,4 +164,5 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ---------------- FOOTER ----------------
-st.success("AURA AI is built as a professional-grade AI engineering platform demonstrating modern GenAI system design.")
+st.divider()
+st.success("AURA AI is a professional-grade AI engineering platform demonstrating modern GenAI system design.")

@@ -1,0 +1,77 @@
+# =========================
+# 🌐 BACKEND CORE
+# =========================
+fastapi
+uvicorn[standard]
+python-multipart
+python-dotenv
+pydantic
+email-validator
+
+# =========================
+# 🔐 AUTH & SECURITY
+# =========================
+python-jose[cryptography]
+passlib[argon2]
+bcrypt
+
+# =========================
+# 🗄 DATABASE (MongoDB)
+# =========================
+pymongo
+
+# =========================
+# 🤖 GEN-AI / LLM STACK
+# =========================
+langchain
+langchain-community
+langchain-core
+langchain-groq
+langgraph
+groq
+
+# =========================
+# 📚 RAG / DOCUMENT AI
+# =========================
+faiss-cpu
+sentence-transformers
+pypdf
+
+# =========================
+# 📄 RESUME AI / NLP
+# =========================
+spacy
+nltk
+scikit-learn
+
+# =========================
+# 📰 NEWS + AGENTS
+# =========================
+requests
+beautifulsoup4
+lxml
+
+# =========================
+# ▶ YOUTUBE AI
+# =========================
+youtube-transcript-api
+yt-dlp
+
+# =========================
+# 🧠 MEMORY / VECTOR
+# =========================
+numpy
+
+# =========================
+# 🎛 FRONTEND
+# =========================
+streamlit
+
+# =========================
+# 🧪 OPTIONAL / UTILS
+# =========================
+tqdm
+rich
+# =========================
+# Note: For video processing, install ffmpeg on your system.
+# sudo dnf install ffmpeg -y

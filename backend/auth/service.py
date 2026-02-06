@@ -5,7 +5,6 @@ from db.mongo import users_col
 
 pwd = CryptContext(schemes=["argon2"], deprecated="auto")
 
-
 OTP_STORE = {}
 
 EMAIL = os.getenv("EMAIL_USER")
@@ -17,10 +16,32 @@ def send_otp(email: str):
     OTP_STORE[email] = otp
 
     msg = EmailMessage()
-    msg["Subject"] = "AURA AI - OTP Verification"
-    msg["From"] = EMAIL
+    msg["Subject"] = "Your AURA AI verification code"
+    msg["From"] = f"AURA AI <{EMAIL}>"
     msg["To"] = email
-    msg.set_content(f"Your OTP is: {otp}")
+
+    msg.set_content(f"""
+Hello,
+
+Welcome to AURA AI — your personal multi-agent artificial intelligence platform.
+
+To complete your account creation, please use the verification code below:
+
+━━━━━━━━━━━━━━━━━━━━━━
+🔐  Your OTP Code: {otp}
+━━━━━━━━━━━━━━━━━━━━━━
+
+This code is valid for a short time only.
+For your security, please do not share this code with anyone.
+
+If you did not request this verification, you can safely ignore this email.
+
+We’re excited to have you onboard!
+
+Best regards,  
+AURA AI Team  
+Multi-Agent Intelligence Platform
+""")
 
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
         server.login(EMAIL, PASS)
@@ -45,6 +66,5 @@ def authenticate(username, password):
     if not user:
         return None
     if not pwd.verify(password, user["password"]):
-
         return None
     return user

@@ -2,26 +2,70 @@ import streamlit as st
 from components.api import api_post, api_post_json
 from components.ui import load_css
 
-# ---------------- CONFIG ----------------
-st.set_page_config("Resume AI | MULTI USER AI", layout="wide")
+# ------------------ PAGE CONFIG ------------------
+st.set_page_config(
+    page_title="Resume AI | MULTI USER AI",
+    page_icon="📄",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
 load_css()
 
-# ---------------- AUTH ----------------
+# ------------------ AUTH ------------------
 if "token" not in st.session_state:
     st.error("🔐 Please login first")
     st.stop()
 
-# ---------------- HEADER ----------------
+# ------------------ SIDEBAR ------------------
+with st.sidebar:
+    st.markdown("<h2 style='text-align:center;'>🧠 MULTI USER AI</h2>", unsafe_allow_html=True)
+    st.markdown("<hr>", unsafe_allow_html=True)
+
+    st.success("✅ Logged in")
+    if st.button("🚪 Logout", use_container_width=True):
+        st.session_state.clear()
+        st.rerun()
+
+    st.markdown("### 📂 Navigation")
+    st.page_link("app.py", label="🏠 Home")
+    st.page_link("pages/chat_ai.py", label="💬 Chat AI")
+    # st.page_link("pages/resume_ai.py", label="📄 Resume AI")
+    st.page_link("pages/memory_dashboard.py", label="🧠 Memory Dashboard")
+    st.page_link("pages/document_qa.py", label="📄 Document AI")
+    st.page_link("pages/news_research.py", label="📰 News Research")
+    st.page_link("pages/youtube_ai.py", label="🎥 YouTube AI")
+    st.page_link("pages/About.py", label="ℹ About")
+    st.caption("⚡ Powered by FastAPI + LangChain + Groq")
+    st.caption("made by Vivek Badgujar")
+
+# ------------------ HERO ------------------
 st.markdown("""
-<div style="text-align:center;">
+<div style="text-align:center; padding:30px 0;">
     <h1>📄 Resume Intelligence System</h1>
     <h4>Multi-Stage AI Resume Understanding & Interview Engine</h4>
 </div>
 """, unsafe_allow_html=True)
 
-st.divider()
+# ------------------ CARD STYLE ------------------
+st.markdown("""
+<style>
+.resume-card {
+    background: radial-gradient(circle at top left, #0f172a, #020617);
+    padding: 30px;
+    border-radius: 22px;
+    border: 1px solid rgba(148,163,184,0.15);
+    box-shadow: 0 0 35px rgba(56,189,248,0.08);
+    max-width: 1200px;
+    margin: auto;
+}
+</style>
+""", unsafe_allow_html=True)
 
-# ---------------- INPUT ----------------
+# ------------------ MAIN CARD ------------------
+# st.markdown("<div class='resume-card'>", unsafe_allow_html=True)
+
+# ================= INPUT =================
 st.subheader("📤 Upload your resume (PDF only)")
 role = st.text_input("🎯 Target Job Role (e.g. Backend Developer, Data Scientist)")
 file = st.file_uploader("Choose resume file", type=["pdf"])
@@ -43,13 +87,12 @@ if st.button("🚀 Analyze Resume", use_container_width=True):
     st.session_state.role = role
     st.success("✅ Resume processed successfully")
 
-# ---------------- DISPLAY ----------------
+# ================= DISPLAY =================
 if "resume_data" in st.session_state:
 
     data = st.session_state.resume_data
     scores = data.get("scores", {})
 
-    # ================= METRICS =================
     st.divider()
     st.subheader("📊 Resume Intelligence Report")
 
@@ -59,21 +102,18 @@ if "resume_data" in st.session_state:
     c3.metric("⏳ Experience", data.get("experience_years", 0))
     c4.metric("⭐ Final Score", scores.get("Final", "N/A"))
 
-    # ================= SECTIONS =================
     st.subheader("📑 Sections")
     if data.get("sections"):
         st.success(" • ".join(data["sections"]))
     else:
         st.info("No sections detected")
 
-    # ================= SKILLS =================
     st.subheader("🛠 Skills")
     if data.get("skills"):
         st.write(" • ".join(data["skills"]))
     else:
         st.warning("No skills extracted")
 
-    # ================= PROJECTS =================
     st.subheader("🚀 Projects / Work Evidence")
     if data.get("projects"):
         for p in data["projects"]:
@@ -84,13 +124,11 @@ if "resume_data" in st.session_state:
     else:
         st.warning("No structured projects detected")
 
-    # ================= ROLE INTELLIGENCE =================
     st.divider()
     st.subheader("🎯 Target Role Intelligence")
     role_data = data.get("role_profile", {})
 
     if role_data.get("role_summary"):
-        st.markdown("### 🧭 Role Overview")
         st.info(role_data["role_summary"])
 
     r1, r2, r3 = st.columns(3)
@@ -111,10 +149,8 @@ if "resume_data" in st.session_state:
             st.warning(f"＋ {n}")
 
     if role_data.get("seniority"):
-        st.markdown("### 🎖 Expected Seniority")
-        st.success(role_data["seniority"].upper())
+        st.success("🎖 Expected Seniority: " + role_data["seniority"].upper())
 
-    # ================= SKILL GAP INTELLIGENCE =================
     st.divider()
     st.subheader("⚠ Skill Gap Intelligence")
 
@@ -127,34 +163,23 @@ if "resume_data" in st.session_state:
 
     with g1:
         st.error("❌ Missing Core Skills")
-        if missing:
-            for s in missing:
-                st.markdown(f"• {s}")
-        else:
-            st.success("No missing core skills 🎉")
+        for s in missing or ["None 🎉"]:
+            st.markdown(f"• {s}")
 
     with g2:
         st.warning("⚠ Weak Skills")
-        if weak:
-            for s in weak:
-                st.markdown(f"• {s}")
-        else:
-            st.info("No weak skills")
+        for s in weak or ["None"]:
+            st.markdown(f"• {s}")
 
     with g3:
         st.success("🚀 Next-Level Skills")
-        if next_level:
-            for s in next_level:
-                st.markdown(f"• {s}")
-        else:
-            st.success("Already advanced 🚀")
+        for s in next_level or ["Already advanced 🚀"]:
+            st.markdown(f"• {s}")
 
-    # ================= EXPERT AI =================
     st.divider()
     st.subheader("🤖 Expert Resume Evaluation")
     st.markdown(data.get("ai_summary", "No expert analysis generated."))
 
-    # ================= INTERVIEW =================
     st.divider()
     st.subheader("🎤 AI Interview Generator")
 
@@ -173,7 +198,6 @@ if "resume_data" in st.session_state:
     with st.expander("⚠ Gap Based"):
         st.markdown(iq.get("gap_based", "Not generated"))
 
-    # ================= MORE QUESTIONS =================
     st.divider()
     if st.button("🔁 Generate More AI Questions", use_container_width=True):
         with st.spinner("Advanced interviewer agent working..."):
@@ -192,3 +216,5 @@ if "resume_data" in st.session_state:
         st.markdown(st.session_state.more_questions)
 
     st.success("✅ Resume intelligence pipeline completed")
+
+st.markdown("</div>", unsafe_allow_html=True)
