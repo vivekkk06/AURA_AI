@@ -1,29 +1,4 @@
 🧠 AURA AI – Multi User AI Platform
-
-AURA AI is a full-stack AI-powered multi-user platform built with modern AI infrastructure and a clean modular architecture.
-
-Built using:
-
-⚡ FastAPI (Backend)
-
-🎨 Streamlit (Frontend)
-
-🧠 Groq LLaMA 3.1 (LLM)
-
-🗄 MongoDB
-
-🎥 YouTube Data API v3
-
-🎙 Faster-Whisper
-
-📧 Email OTP Authentication
-
-🚀 Repository
-
-🔗 GitHub:
-https://github.com/vivekkk06/AURA_AI
-
-📁 Project Structure
 AURA_AI/
 │
 ├── backend/
