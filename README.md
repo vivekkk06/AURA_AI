@@ -1,102 +1,39 @@
-# 🧠 MULTI USER AI PLATFORM
+# 🧠 AURA AI – Multi User AI Platform
 
-An advanced multi-user AI platform built with **FastAPI + Streamlit + MongoDB + Groq LLM**.
+AURA AI is a full-stack AI-powered multi-user platform built using:
 
-This project includes:
-
-- 💬 Chat AI
-- 🎥 YouTube AI (Quick + Full Summary with Metadata)
-- 📄 Document AI
-- 🧠 Memory Dashboard
-- 📰 News Research
-- 🔐 Authentication System
-- 👥 Multi-user session handling
+- ⚡ FastAPI (Backend)
+- 🎨 Streamlit (Frontend)
+- 🧠 Groq LLaMA 3.1 (LLM)
+- 🗄 MongoDB
+- 🎥 YouTube Data API
+- 🎙 Faster-Whisper
+- 📧 Email Notification System
 
 ---
 
-# 🚀 Features
-
-## 🎥 YouTube AI
-- Quick summary (instant)
-- Full detailed summary (background processing)
-- Auto-refresh status
-- View:
-  - Title
-  - Channel
-  - Thumbnail
-  - Views
-  - Likes
-  - Subscribers
-  - Duration
-- Transcript toggle
-- Download summary as PDF
-- Audio upload fallback (Whisper AI)
-
----
-
-## 💬 Chat AI
-- Conversational AI powered by Groq
-- User-based memory
-- Session isolation
-
----
-
-## 📄 Document AI
-- Upload document
-- Ask questions
-- Context-based answers
-
----
-
-## 🧠 Memory Dashboard
-- View stored conversation history
-- Per-user data separation
-
----
-
-## 📰 News Research
-- AI powered research assistant
-
----
-
-# 🏗 Tech Stack
-
-## Backend
-- FastAPI
-- MongoDB
-- Groq (LLaMA 3.1)
-- Faster-Whisper
-- YouTube Data API
-
-## Frontend
-- Streamlit
-- Custom CSS UI
-- ReportLab (PDF generation)
-
----
-
-# 📂 Project Structure
+# 🚀 Live Project Structure
 
 ```
-multi_user_AI/
+AURA_AI/
 │
 ├── backend/
 │   ├── main.py
+│   ├── core/
+│   ├── db/
 │   ├── modules/
 │   │   ├── youtube_ai/
 │   │   ├── chat_ai/
 │   │   ├── document_ai/
-│   │   ├── memory/
-│   │   └── news_research/
-│   ├── db/
-│   ├── core/
+│   │   ├── news_research/
+│   │   └── memory/
 │   └── requirements.txt
 │
 ├── frontend/
 │   ├── app.py
 │   ├── pages/
-│   │   ├── chat_ai.py
 │   │   ├── youtube_ai.py
+│   │   ├── chat_ai.py
 │   │   ├── document_qa.py
 │   │   ├── memory_dashboard.py
 │   │   └── news_research.py
@@ -106,13 +43,131 @@ multi_user_AI/
 
 ---
 
+# ✨ Core Features
+
+## 🔐 Authentication System
+- JWT-based login/signup
+- Multi-user session management
+- Secure token validation
+- Per-user data isolation
+
+---
+
+## 💬 Chat AI
+- Conversational AI powered by Groq (LLaMA 3.1)
+- User memory storage
+- Persistent conversation tracking
+
+---
+
+## 🎥 YouTube AI
+
+### 🔹 Instant Quick Summary
+- High-level summary generated immediately
+
+### 🔹 Background Full Summary
+- Detailed structured summary
+- Runs asynchronously
+- Auto-refresh updates UI
+
+### 🔹 Metadata Fetching
+Displays:
+- 🎬 Title
+- 📺 Channel
+- 🖼 Thumbnail
+- 👁 Views
+- 👍 Likes
+- 👥 Subscribers
+- ⏱ Duration
+
+### 🔹 Transcript Toggle
+Switch between:
+- AI Summary
+- Raw Transcript
+
+### 🔹 PDF Download
+Download summary as PDF.
+
+### 🔹 Audio Upload Fallback
+If captions unavailable:
+- User uploads audio
+- Whisper transcribes
+- AI generates summary
+
+---
+
+## 📄 Document AI
+- Upload document
+- Ask contextual questions
+- AI-generated answers
+
+---
+
+## 🧠 Memory Dashboard
+- View stored user interactions
+- Clean UI memory panel
+- Per-user database separation
+
+---
+
+## 📰 News Research AI
+- AI-assisted research system
+- Context-aware news analysis
+
+---
+
+## 📧 Email Sending System
+
+AURA AI includes an integrated email notification system.
+
+### Features:
+- Sends verification emails
+- Sends alerts or system messages
+- SMTP-based email delivery
+- Secure credentials via environment variables
+
+### Environment Variables Required:
+
+```
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_USER=your_email@gmail.com
+EMAIL_PASSWORD=your_app_password
+```
+
+> ⚠ For Gmail:
+Enable App Passwords and use that instead of your normal password.
+
+---
+
+# 🏗 Tech Stack
+
+## Backend
+- FastAPI
+- MongoDB
+- Groq LLM API
+- YouTube Data API v3
+- Faster-Whisper
+- yt-dlp
+- JWT Authentication
+- SMTP Email Service
+
+## Frontend
+- Streamlit
+- Custom CSS Glass UI
+- ReportLab (PDF generation)
+
+---
+
 # ⚙️ Installation Guide
+
+---
 
 ## 1️⃣ Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
-cd multi_user_AI
+git clone https://github.com/vivekkk06/AURA_AI.git
+cd AURA_AI
 ```
 
 ---
@@ -122,23 +177,24 @@ cd multi_user_AI
 ```bash
 cd backend
 python -m venv venv
-source venv/bin/activate   # Linux / Mac
-venv\Scripts\activate      # Windows
-
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
 ---
 
-## 3️⃣ Environment Variables
-
-Create `.env` inside backend folder:
+## 3️⃣ Create `.env` File (Inside backend)
 
 ```
-GROQ_API_KEY=your_groq_api_key
-YOUTUBE_API_KEY=your_youtube_api_key
+GROQ_API_KEY=your_groq_key
+YOUTUBE_API_KEY=your_youtube_key
 MONGO_URL=mongodb://localhost:27017
 SECRET_KEY=your_secret_key
+
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_USER=your_email
+EMAIL_PASSWORD=your_app_password
 ```
 
 ---
@@ -150,7 +206,6 @@ uvicorn main:app --reload
 ```
 
 Backend runs at:
-
 ```
 http://127.0.0.1:8000
 ```
@@ -165,7 +220,6 @@ Open new terminal:
 cd frontend
 python -m venv .venv
 source .venv/bin/activate
-
 pip install streamlit requests reportlab
 ```
 
@@ -176,41 +230,22 @@ streamlit run app.py
 ```
 
 App runs at:
-
 ```
 http://localhost:8501
 ```
 
 ---
 
-# 🎥 YouTube AI Flow
-
-1. User pastes YouTube URL
-2. Quick summary generated instantly
-3. Full summary runs in background
-4. Auto-refresh updates result
-5. User can:
-   - Toggle transcript
-   - Download PDF
-   - View metadata
-
-If captions unavailable:
-- User can upload audio file
-- Whisper transcribes
-- AI generates summary
-
----
-
 # 🛠 Required External Tools
 
-Install:
+## Install yt-dlp
 
-### yt-dlp
 ```bash
 pip install yt-dlp
 ```
 
-### FFmpeg
+## Install FFmpeg
+
 Linux:
 ```bash
 sudo dnf install ffmpeg
@@ -218,60 +253,57 @@ sudo dnf install ffmpeg
 
 ---
 
-# 🔐 Authentication
+# 🔁 Background Processing Flow
 
-- JWT-based authentication
-- Multi-user session isolation
-- MongoDB-based storage
+YouTube AI works as:
 
----
-
-# 📦 API Endpoints
-
-## YouTube AI
-
-```
-POST /youtube/summarize
-GET  /youtube/status
-POST /youtube/upload-audio
-```
+1. User pastes URL
+2. Quick summary generated instantly
+3. MongoDB stores stage
+4. Background task generates full summary
+5. Frontend auto-refresh fetches updated result
 
 ---
 
-# 🧠 Background Processing
+# 🔐 Security
 
-FastAPI BackgroundTasks:
-- Quick summary → immediate
-- Full summary → async background
-- MongoDB stage tracking
-
----
-
-# 📥 PDF Export
-
-Summary can be downloaded as PDF using ReportLab.
+- JWT Authentication
+- Token validation middleware
+- Protected API routes
+- MongoDB ObjectId handling
+- Secure environment variables
 
 ---
 
-# ⚠️ Important Notes
+# 💡 Architecture Highlights
 
-- Do NOT commit:
-  - .env
-  - venv
-  - audio files
-- Add proper `.gitignore`
+- Clean modular backend structure
+- Separate service, routes, and transcript layers
+- No blocking LLM calls
+- Async background task handling
+- Multi-user session-safe system
 
 ---
 
 # 🧑‍💻 Author
 
-Vivek Badgujar
+**Vivek Badgujar**
 
-Built using:
-FastAPI + Streamlit + Groq + MongoDB
+GitHub:
+https://github.com/vivekkk06/AURA_AI
+
+---
+
+# 📌 Future Improvements
+
+- Docker support
+- Cloud deployment
+- Role-based access control
+- Analytics dashboard
+- UI animations upgrade
 
 ---
 
 # 📜 License
 
-This project is for educational & personal use.
+This project is built for educational and portfolio purposes.
