@@ -1,20 +1,29 @@
-# 🧠 AURA AI – Multi User AI Platform
+🧠 AURA AI – Multi User AI Platform
 
-AURA AI is a full-stack AI-powered multi-user platform built using:
+AURA AI is a full-stack AI-powered multi-user platform built with modern AI infrastructure and a clean modular architecture.
 
-- ⚡ FastAPI (Backend)
-- 🎨 Streamlit (Frontend)
-- 🧠 Groq LLaMA 3.1 (LLM)
-- 🗄 MongoDB
-- 🎥 YouTube Data API
-- 🎙 Faster-Whisper
-- 📧 Email Notification System
+Built using:
 
----
+⚡ FastAPI (Backend)
 
-# 🚀 Live Project Structure
+🎨 Streamlit (Frontend)
 
-```
+🧠 Groq LLaMA 3.1 (LLM)
+
+🗄 MongoDB
+
+🎥 YouTube Data API v3
+
+🎙 Faster-Whisper
+
+📧 Email OTP Authentication
+
+🚀 Repository
+
+🔗 GitHub:
+https://github.com/vivekkk06/AURA_AI
+
+📁 Project Structure
 AURA_AI/
 │
 ├── backend/
@@ -39,271 +48,296 @@ AURA_AI/
 │   │   └── news_research.py
 │
 └── README.md
-```
 
----
+✨ Core Features
+🔐 Authentication System
 
-# ✨ Core Features
+Email OTP verification
 
-## 🔐 Authentication System
-- JWT-based login/signup
-- Multi-user session management
-- Secure token validation
-- Per-user data isolation
+JWT-based login
 
----
+Multi-user session management
 
-## 💬 Chat AI
-- Conversational AI powered by Groq (LLaMA 3.1)
-- User memory storage
-- Persistent conversation tracking
+Secure token validation
 
----
+Per-user data isolation
 
-## 🎥 YouTube AI
+Password hashing using Argon2
 
-### 🔹 Instant Quick Summary
-- High-level summary generated immediately
+💬 Chat AI
 
-### 🔹 Background Full Summary
-- Detailed structured summary
-- Runs asynchronously
-- Auto-refresh updates UI
+Groq-powered conversational AI (LLaMA 3.1)
 
-### 🔹 Metadata Fetching
-Displays:
-- 🎬 Title
-- 📺 Channel
-- 🖼 Thumbnail
-- 👁 Views
-- 👍 Likes
-- 👥 Subscribers
-- ⏱ Duration
+Persistent user memory
 
-### 🔹 Transcript Toggle
+MongoDB conversation storage
+
+Multi-session safe architecture
+
+🎥 YouTube AI
+⚡ Instant Quick Summary
+
+High-level summary generated immediately
+
+🧠 Background Full Summary
+
+Detailed structured summary
+
+Runs asynchronously
+
+Auto-refresh UI updates
+
+📊 Metadata Display
+
+🎬 Title
+
+📺 Channel
+
+🖼 Thumbnail
+
+👁 Views
+
+👍 Likes
+
+👥 Subscribers
+
+⏱ Duration
+
+📜 Transcript Toggle
+
 Switch between:
-- AI Summary
-- Raw Transcript
 
-### 🔹 PDF Download
-Download summary as PDF.
+AI Summary
 
-### 🔹 Audio Upload Fallback
+Raw Transcript
+
+📥 PDF Export
+
+Download summary as PDF (ReportLab)
+
+🎙 Audio Upload Fallback
+
 If captions unavailable:
-- User uploads audio
-- Whisper transcribes
-- AI generates summary
 
----
+User uploads audio
 
-## 📄 Document AI
-- Upload document
-- Ask contextual questions
-- AI-generated answers
+Whisper transcribes
 
----
+AI generates summary
 
-## 🧠 Memory Dashboard
-- View stored user interactions
-- Clean UI memory panel
-- Per-user database separation
+📄 Document AI
 
----
+Upload PDF
 
-## 📰 News Research AI
-- AI-assisted research system
-- Context-aware news analysis
+Ask contextual questions
 
----
+Vector search (FAISS)
 
-## 📧 Email Sending System
+Sentence-transformers embeddings
 
-AURA AI includes an integrated email notification system.
+🧠 Memory Dashboard
 
-### Features:
-- Sends verification emails
-- Sends alerts or system messages
-- SMTP-based email delivery
-- Secure credentials via environment variables
+View stored user interactions
 
-### Environment Variables Required:
+Clean UI memory panel
 
-```
-EMAIL_HOST=smtp.gmail.com
-EMAIL_PORT=587
-EMAIL_USER=your_email@gmail.com
-EMAIL_PASSWORD=your_app_password
-```
+Per-user database separation
 
-> ⚠ For Gmail:
-Enable App Passwords and use that instead of your normal password.
+📰 News Research AI
 
----
+AI-assisted news analysis
 
-# 🏗 Tech Stack
+Web scraping (BeautifulSoup)
 
-## Backend
-- FastAPI
-- MongoDB
-- Groq LLM API
-- YouTube Data API v3
-- Faster-Whisper
-- yt-dlp
-- JWT Authentication
-- SMTP Email Service
+Context-aware summarization
 
-## Frontend
-- Streamlit
-- Custom CSS Glass UI
-- ReportLab (PDF generation)
+📧 Email Notification System
 
----
+OTP verification emails
 
-# ⚙️ Installation Guide
+SMTP-based delivery
 
----
+Secure credentials via environment variables
 
-## 1️⃣ Clone Repository
+Gmail App Password supported
 
-```bash
+🏗 Tech Stack
+Backend
+
+FastAPI
+
+MongoDB
+
+Groq API
+
+YouTube Data API v3
+
+Faster-Whisper
+
+yt-dlp
+
+JWT Authentication
+
+SMTP Email Service
+
+Frontend
+
+Streamlit
+
+Custom Glass UI CSS
+
+ReportLab (PDF export)
+
+⚙️ Installation Guide
+1️⃣ Clone Repository
 git clone https://github.com/vivekkk06/AURA_AI.git
 cd AURA_AI
-```
 
----
+2️⃣ Backend Setup
+Create Virtual Environment
+🐧 Linux / macOS
+cd backend
+python3 -m venv venv
+source venv/bin/activate
 
-## 2️⃣ Backend Setup
-
-```bash
+🪟 Windows
 cd backend
 python -m venv venv
-source venv/bin/activate
+venv\Scripts\activate
+
+Install Dependencies
 pip install -r requirements.txt
-```
 
----
+3️⃣ Create .env File (Inside backend folder)
 
-## 3️⃣ Create `.env` File (Inside backend)
+Create a file named .env and add:
 
-```
 GROQ_API_KEY=your_groq_key
-YOUTUBE_API_KEY=your_youtube_key
+YOUTUBE_API_KEY=your_youtube_api_key
 MONGO_URL=mongodb://localhost:27017
 SECRET_KEY=your_secret_key
 
 EMAIL_HOST=smtp.gmail.com
 EMAIL_PORT=587
-EMAIL_USER=your_email
-EMAIL_PASSWORD=your_app_password
-```
+EMAIL_USER=your_email@gmail.com
+EMAIL_PASSWORD=your_gmail_app_password
 
----
 
-## 4️⃣ Run Backend
+⚠ Important:
 
-```bash
+Do NOT use your real Gmail password.
+
+Enable App Passwords in Google account security.
+
+Use that generated password.
+
+Your project securely reads these using os.getenv().
+
+4️⃣ Run Backend
 uvicorn main:app --reload
-```
+
 
 Backend runs at:
-```
+
 http://127.0.0.1:8000
-```
 
----
+5️⃣ Frontend Setup
 
-## 5️⃣ Frontend Setup
+Open new terminal.
 
-Open new terminal:
+🐧 Linux / macOS
+cd frontend
+python3 -m venv .venv
+source .venv/bin/activate
 
-```bash
+🪟 Windows
 cd frontend
 python -m venv .venv
-source .venv/bin/activate
+.venv\Scripts\activate
+
+Install Dependencies
 pip install streamlit requests reportlab
-```
 
-Run frontend:
-
-```bash
+Run Frontend
 streamlit run app.py
-```
 
-App runs at:
-```
+
+Frontend runs at:
+
 http://localhost:8501
-```
 
----
-
-# 🛠 Required External Tools
-
-## Install yt-dlp
-
-```bash
+🛠 Required External Tools
+Install yt-dlp
 pip install yt-dlp
-```
 
-## Install FFmpeg
-
-Linux:
-```bash
+Install FFmpeg
+Linux (Fedora)
 sudo dnf install ffmpeg
-```
 
----
+Ubuntu
+sudo apt install ffmpeg
 
-# 🔁 Background Processing Flow
+macOS
+brew install ffmpeg
+
+Windows
+
+Download from:
+https://ffmpeg.org/download.html
+
+Add to system PATH.
+
+🔁 Background Processing Flow
 
 YouTube AI works as:
 
-1. User pastes URL
-2. Quick summary generated instantly
-3. MongoDB stores stage
-4. Background task generates full summary
-5. Frontend auto-refresh fetches updated result
+User pastes URL
 
----
+Quick summary generated instantly
 
-# 🔐 Security
+MongoDB stores stage
 
-- JWT Authentication
-- Token validation middleware
-- Protected API routes
-- MongoDB ObjectId handling
-- Secure environment variables
+Background task generates full summary
 
----
+Frontend auto-refresh fetches updated result
 
-# 💡 Architecture Highlights
+Non-blocking architecture.
 
-- Clean modular backend structure
-- Separate service, routes, and transcript layers
-- No blocking LLM calls
-- Async background task handling
-- Multi-user session-safe system
+🔐 Security
 
----
+JWT Authentication
 
-# 🧑‍💻 Author
+Token validation middleware
 
-**Vivek Badgujar**
+MongoDB ObjectId handling
+
+Argon2 password hashing
+
+Environment variable secret storage
+
+No credentials stored in repository
+
+🧑‍💻 Author
+
+Vivek Badgujar
 
 GitHub:
 https://github.com/vivekkk06/AURA_AI
 
----
+📌 Future Improvements
 
-# 📌 Future Improvements
+Docker containerization
 
-- Docker support
-- Cloud deployment
-- Role-based access control
-- Analytics dashboard
-- UI animations upgrade
+Cloud deployment (AWS / GCP / Azure)
 
----
+Role-based access control
 
-# 📜 License
+Analytics dashboard
+
+UI animation upgrades
+
+CI/CD integration
+
+📜 License
 
 This project is built for educational and portfolio purposes.
