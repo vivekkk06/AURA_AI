@@ -5,6 +5,7 @@ pydantic-settings
 python-dotenv
 passlib
 python-jose
+python-multipart
 SQLAlchemy
 pymongo
 langchain
