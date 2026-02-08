@@ -64,7 +64,7 @@ if not st.session_state.otp_sent:
             r = requests.post(
                 "http://127.0.0.1:8000/auth/send-otp",
                 data={"email": email},
-                timeout=30
+                timeout=60
             )
 
         if r.status_code == 200:
@@ -99,7 +99,7 @@ else:
                     "username": user,
                     "password": pwd
                 },
-                timeout=30
+                timeout=60
             )
 
         if r.status_code == 200:

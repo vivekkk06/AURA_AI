@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, Form
+from fastapi import APIRouter, HTTPException, Form, BackgroundTasks
 from core.security import create_access_token
 from .service import send_otp, verify_otp, create_user, authenticate
 
@@ -6,8 +6,12 @@ router = APIRouter(prefix="/auth", tags=["Auth"])
 
 
 @router.post("/send-otp")
-def send(email: str = Form(...)):
-    send_otp(email)
+def send(
+    bg: BackgroundTasks,
+    email: str = Form(...)
+):
+    # Run email in background
+    bg.add_task(send_otp, email)
     return {"msg": "OTP sent"}
 
 
