@@ -142,7 +142,7 @@ with st.container():
     """, unsafe_allow_html=True)
 
     if st.button("Open Resume AI", key="resume"):
-        st.switch_page("pages/Resume_AI.py")
+        st.switch_page("pages/resume_ai.py")
 
     st.markdown("</div>", unsafe_allow_html=True)
 
@@ -159,7 +159,7 @@ with st.container():
     """, unsafe_allow_html=True)
 
     if st.button("Open Memory Dashboard", key="memory"):
-        st.switch_page("pages/Memory_Dashboard.py")
+        st.switch_page("pages/memory_dashboard.py")
 
     st.markdown("</div>", unsafe_allow_html=True)
 
@@ -176,7 +176,7 @@ with st.container():
     """, unsafe_allow_html=True)
 
     if st.button("Open Youtube-summary-translator", key="dash"):
-        st.switch_page("pages/Youtube_AI.py")
+        st.switch_page("pages/youtube_ai.py")
 
     st.markdown("</div>", unsafe_allow_html=True)
 
