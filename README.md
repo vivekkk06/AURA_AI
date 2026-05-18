@@ -1,33 +1,33 @@
-# 🧠 AURA AI -- Multi User AI Platform
+# AURA AI -- Multi User AI Platform
 
 AURA AI is a full-stack AI-powered multi-user platform built with modern
 AI infrastructure and a clean modular architecture.
 
 ------------------------------------------------------------------------
 
-## 🚀 Tech Stack
+## Tech Stack
 
 ### Backend
 
--   ⚡ FastAPI
--   🗄 MongoDB
--   🧠 Groq (LLaMA 3.1)
--   🎥 YouTube Data API v3
--   🎙 Faster-Whisper
--   🔐 JWT Authentication
--   📧 SMTP Email System
+-   FastAPI
+-   MongoDB
+-   Groq (LLaMA 3.1)
+-   YouTube Data API v3
+-   Faster-Whisper
+-   JWT Authentication
+-   SMTP Email System
 
 ### Frontend
 
--   🎨 Streamlit
--   📄 ReportLab (PDF Export)
--   ✨ Custom Glass UI
+-   Streamlit
+-   ReportLab (PDF Export)
+-   Custom Glass UI
 
 ------------------------------------------------------------------------
 
-## ✨ Core Features
+## Core Features
 
-### 🔐 Authentication
+###  Authentication
 
 -   Email OTP verification
 -   Argon2 password hashing
@@ -35,7 +35,7 @@ AI infrastructure and a clean modular architecture.
 -   Secure protected routes
 -   Multi-user session isolation
 
-### 🎥 YouTube AI
+###  YouTube AI
 
 -   Instant quick summary
 -   Background detailed summary
@@ -44,32 +44,32 @@ AI infrastructure and a clean modular architecture.
 -   PDF download
 -   Audio upload fallback (Whisper transcription)
 
-### 💬 Chat AI
+###  Chat AI
 
 -   Groq-powered LLaMA 3.1 chat
 -   Persistent memory storage
 -   Per-user conversation history
 
-### 📄 Document AI
+###  Document AI
 
 -   Upload PDFs
 -   Ask contextual questions
 -   Vector search (FAISS)
 
-### 📰 News Research AI
+###  News Research AI
 
 -   Web scraping
 -   AI summarization
 -   Context-aware research
 
-### 🧠 Memory Dashboard
+###  Memory Dashboard
 
 -   View stored interactions
 -   Clean per-user data separation
 
 ------------------------------------------------------------------------
 
-## 📁 Project Structure
+##  Project Structure
 
 AURA_AI/ │ ├── backend/ │ ├── main.py │ ├── core/ │ ├── db/ │ ├──
 modules/ │ └── requirements.txt │ ├── frontend/ │ ├── app.py │ ├──
@@ -77,7 +77,7 @@ pages/ │ └── components/ │ └── README.md
 
 ------------------------------------------------------------------------
 
-## ⚙️ Installation Guide
+##  Installation Guide
 
 ### 1️⃣ Clone Repository
 
@@ -128,7 +128,7 @@ Frontend URL: http://localhost:8501
 
 ------------------------------------------------------------------------
 
-## 🛠 Required External Tools
+##  Required External Tools
 
 Install yt-dlp: pip install yt-dlp
 
@@ -144,7 +144,7 @@ Windows: Download from https://ffmpeg.org/download.html and add to PATH.
 
 ------------------------------------------------------------------------
 
-## 🔐 Security
+##  Security
 
 -   JWT authentication
 -   Environment-based secrets
@@ -154,7 +154,7 @@ Windows: Download from https://ffmpeg.org/download.html and add to PATH.
 
 ------------------------------------------------------------------------
 
-## 👨‍💻 Author
+##  Author
 
 Vivek Badgujar\
 GitHub: https://github.com/vivekkk06/AURA_AI
