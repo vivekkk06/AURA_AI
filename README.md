@@ -1,166 +1,306 @@
-# AURA AI -- Multi User AI Platform
+# AURA AI — Multi User AI Platform
 
-AURA AI is a full-stack AI-powered multi-user platform built with modern
-AI infrastructure and a clean modular architecture.
+AURA AI is a full-stack AI-powered multi-user platform built using modern AI infrastructure, secure authentication, and modular backend architecture.
 
-------------------------------------------------------------------------
+The platform provides AI-powered tools for:
+
+- Conversational AI
+- YouTube Video Analysis
+- Document Question Answering
+- News Research & Summarization
+- Resume Intelligence
+- User Memory Management
+
+---
 
 ## Tech Stack
 
 ### Backend
 
--   FastAPI
--   MongoDB
--   Groq (LLaMA 3.1)
--   YouTube Data API v3
--   Faster-Whisper
--   JWT Authentication
--   SMTP Email System
+- FastAPI
+- MongoDB
+- Groq (LLaMA 3.1)
+- YouTube Data API v3
+- Faster-Whisper
+- JWT Authentication
+- SMTP Email System
+- Argon2 Password Hashing
 
 ### Frontend
 
--   Streamlit
--   ReportLab (PDF Export)
--   Custom Glass UI
+- Streamlit
+- ReportLab (PDF Export)
+- Custom Glass UI
 
-------------------------------------------------------------------------
+---
 
-## Core Features
+## Features
 
-###  Authentication
+### Authentication
 
--   Email OTP verification
--   Argon2 password hashing
--   JWT login
--   Secure protected routes
--   Multi-user session isolation
+- Email OTP Verification
+- JWT Login Authentication
+- Secure Protected Routes
+- Multi-User Session Isolation
+- Argon2 Password Hashing
 
-###  YouTube AI
+### Chat AI
 
--   Instant quick summary
--   Background detailed summary
--   Metadata display (Views, Likes, Subs, Duration)
--   Transcript toggle
--   PDF download
--   Audio upload fallback (Whisper transcription)
+- Groq Powered LLaMA 3.1 Chat
+- Persistent Memory Storage
+- Per-User Conversation History
 
-###  Chat AI
+### YouTube AI
 
--   Groq-powered LLaMA 3.1 chat
--   Persistent memory storage
--   Per-user conversation history
+- Instant Quick Summary
+- Detailed Background Summary
+- Metadata Display
+- Transcript Toggle
+- PDF Export
+- Audio Upload Fallback
+- Whisper Transcription
 
-###  Document AI
+### Document AI
 
--   Upload PDFs
--   Ask contextual questions
--   Vector search (FAISS)
+- PDF Upload Support
+- Contextual Question Answering
+- Vector Search using FAISS
 
-###  News Research AI
+### News Research AI
 
--   Web scraping
--   AI summarization
--   Context-aware research
+- Web Scraping
+- AI Summarization
+- Context-Aware Research
 
-###  Memory Dashboard
+### Resume AI
 
--   View stored interactions
--   Clean per-user data separation
+- Resume Analysis
+- Intelligent Feedback
+- AI-Powered Processing
 
-------------------------------------------------------------------------
+### Memory Dashboard
 
-##  Project Structure
+- View Stored Interactions
+- Per-User Data Isolation
+- Memory Management
 
-AURA_AI/ │ ├── backend/ │ ├── main.py │ ├── core/ │ ├── db/ │ ├──
-modules/ │ └── requirements.txt │ ├── frontend/ │ ├── app.py │ ├──
-pages/ │ └── components/ │ └── README.md
+---
 
-------------------------------------------------------------------------
+## Project Structure
 
-##  Installation Guide
+```text
+AURA_AI/
+│
+├── backend/
+│   ├── main.py
+│   ├── core/
+│   ├── db/
+│   ├── modules/
+│   └── requirements.txt
+│
+├── frontend/
+│   ├── app.py
+│   ├── pages/
+│   └── components/
+│
+├── images/
+│
+└── README.md
+```
 
-### 1️⃣ Clone Repository
+---
 
-git clone https://github.com/vivekkk06/AURA_AI.git cd AURA_AI
+## Installation Guide
 
-------------------------------------------------------------------------
+### 1. Clone Repository
 
-### 2️⃣ Backend Setup
+```bash
+git clone https://github.com/vivekkk06/AURA_AI.git
+cd AURA_AI
+```
 
-Linux/macOS: python3 -m venv venv source venv/bin/activate
+---
 
-Windows: python -m venv venv venv`\Scripts`{=tex}`\activate`{=tex}
+### 2. Backend Setup
 
-Install dependencies: pip install -r requirements.txt
+#### Linux / macOS
 
-------------------------------------------------------------------------
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
 
-### 3️⃣ Environment Variables (.env inside backend)
+#### Windows
 
-GROQ_API_KEY=your_groq_key YOUTUBE_API_KEY=your_youtube_key
-MONGO_URL=mongodb://localhost:27017 SECRET_KEY=your_secret_key
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
 
-EMAIL_HOST=smtp.gmail.com EMAIL_PORT=587 EMAIL_USER=your_email@gmail.com
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+### 3. Environment Variables
+
+Create a `.env` file inside `backend/`
+
+```env
+GROQ_API_KEY=your_groq_key
+YOUTUBE_API_KEY=your_youtube_key
+MONGO_URL=mongodb://localhost:27017
+SECRET_KEY=your_secret_key
+
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_USER=your_email@gmail.com
 EMAIL_PASSWORD=your_app_password
+```
 
-⚠ Use Gmail App Password, not your real password.
+Use a Gmail App Password instead of your real Gmail password.
 
-------------------------------------------------------------------------
+---
 
-### 4️⃣ Run Backend
+### 4. Run Backend
 
+```bash
 uvicorn main:app --reload
+```
 
-Backend URL: http://127.0.0.1:8000
+Backend URL:
 
-------------------------------------------------------------------------
+```text
+http://127.0.0.1:8000
+```
 
-### 5️⃣ Frontend Setup
+---
 
-cd frontend python -m venv .venv source .venv/bin/activate (Linux/macOS)
-.venv`\Scripts`{=tex}`\activate  `{=tex}(Windows)
+### 5. Frontend Setup
 
+```bash
+cd frontend
+python -m venv .venv
+```
+
+#### Linux / macOS
+
+```bash
+source .venv/bin/activate
+```
+
+#### Windows
+
+```bash
+.venv\Scripts\activate
+```
+
+Install packages:
+
+```bash
 pip install streamlit requests reportlab
+```
 
-Run: streamlit run app.py
+Run frontend:
 
-Frontend URL: http://localhost:8501
+```bash
+streamlit run app.py
+```
 
-------------------------------------------------------------------------
+Frontend URL:
 
-##  Required External Tools
+```text
+http://localhost:8501
+```
 
-Install yt-dlp: pip install yt-dlp
+---
 
-Install FFmpeg:
+## Required External Tools
 
-Linux: sudo dnf install ffmpeg
+### yt-dlp
 
-Ubuntu: sudo apt install ffmpeg
+```bash
+pip install yt-dlp
+```
 
-macOS: brew install ffmpeg
+### FFmpeg
 
-Windows: Download from https://ffmpeg.org/download.html and add to PATH.
+#### Fedora
 
-------------------------------------------------------------------------
+```bash
+sudo dnf install ffmpeg
+```
 
-##  Security
+#### Ubuntu
 
--   JWT authentication
--   Environment-based secrets
--   No credentials stored in repository
--   MongoDB ObjectId protection
--   Secure password hashing
+```bash
+sudo apt install ffmpeg
+```
 
-------------------------------------------------------------------------
+#### macOS
 
-##  Author
+```bash
+brew install ffmpeg
+```
 
-Vivek Badgujar\
-GitHub: https://github.com/vivekkk06/AURA_AI
+#### Windows
 
-------------------------------------------------------------------------
+Download from:
 
-## 📜 License
+https://ffmpeg.org/download.html
+
+Add FFmpeg to your system PATH.
+
+---
+
+## Screenshots
+
+<p align="center">
+  <img src="images/login.png" width="45%">
+  <img src="images/agenthub.png" width="45%">
+</p>
+
+<p align="center">
+  <img src="images/chatAI.png" width="45%">
+  <img src="images/documentsQA.png" width="45%">
+</p>
+
+<p align="center">
+  <img src="images/youtubeai.png" width="45%">
+  <img src="images/reasearch.png" width="45%">
+</p>
+
+<p align="center">
+  <img src="images/resumeai.png" width="45%">
+  <img src="images/memory.png" width="45%">
+</p>
+
+---
+
+## Security
+
+Implemented security measures:
+
+- JWT Authentication
+- Environment-Based Secret Management
+- Secure Password Hashing
+- Protected API Access
+- MongoDB ObjectId Protection
+- Repository Credential Isolation
+
+---
+
+## Author
+
+**Vivek Badgujar**
+
+GitHub: https://github.com/vivekkk06
+
+---
+
+## License
 
 Built for educational and portfolio purposes.
